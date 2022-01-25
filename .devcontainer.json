@@ -1,0 +1,15 @@
+{
+  "name": "backend",
+  "dockerComposeFile": [
+    "../docker-compose.yml"
+  ],
+  "service": "app",
+  "shutdownAction": "none",
+  "extensions": [
+    "ms-azuretools.vscode-docker",
+    "xdebug.php-debug",
+    "zobo.php-intellisense",
+    "onecentlin.laravel-blade"
+  ],
+  "workspaceFolder": "/var/www/html"
+}

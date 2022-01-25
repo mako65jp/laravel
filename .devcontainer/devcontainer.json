@@ -24,13 +24,10 @@
 
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
-		"ms-azuretools.vscode-docker",
 		"xdebug.php-debug",
 		"zobo.php-intellisense",
 		"onecentlin.laravel-blade",
 		"neilbrayfield.php-docblocker",
-		// "onecentlin.laravel5-snippets",
-		// "coenraads.bracket-pair-colorizer-2",
 	]
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
