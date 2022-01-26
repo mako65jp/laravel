@@ -2,10 +2,6 @@
 # FROM php:7.4.1-fpm-alpine
 FROM php:fpm-alpine
 
-# COPY php.ini
-COPY ./php.ini /usr/local/etc/php/php.ini
-COPY ./20-xdebug.ini /usr/local/etc/php/conf.d/20-xdebug.ini
-
 # Composer install
 COPY --from=composer:2.0 /usr/bin/composer /usr/bin/composer
 
@@ -23,5 +19,10 @@ RUN set -ex \
     && docker-php-ext-install pdo pdo_pgsql bcmath \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug
+
+# COPY php.ini
+COPY ./php.ini /usr/local/etc/php/php.ini
+COPY ./20-xdebug.ini /usr/local/etc/php/conf.d/20-xdebug.ini
+COPY ./php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
 
 WORKDIR /var/www/html

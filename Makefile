@@ -9,9 +9,9 @@ create-project:
 	@make build
 	@make up
 	@make laravel-install
-	docker compose exec app php artisan key:generate
-	docker compose exec app php artisan storage:link
-	docker compose exec app chmod -R 777 storage bootstrap/cache
+	# docker compose exec app php artisan key:generate
+	# docker compose exec app php artisan storage:link
+	# docker compose exec app chmod -R 777 storage bootstrap/cache
 	@make fresh
 install-recommend-packages:
 	docker compose exec app composer require doctrine/dbal
@@ -25,10 +25,10 @@ install-recommend-packages:
 init:
 	docker compose up -d --build
 	docker compose exec app composer install
-	docker compose exec app cp .env.example .env
-	docker compose exec app php artisan key:generate
-	docker compose exec app php artisan storage:link
-	docker compose exec app chmod -R 777 storage bootstrap/cache
+	# docker compose exec app cp .env.example .env
+	# docker compose exec app php artisan key:generate
+	# docker compose exec app php artisan storage:link
+	# docker compose exec app chmod -R 777 storage bootstrap/cache
 	@make fresh
 remake:
 	@make destroy
@@ -36,14 +36,17 @@ remake:
 stop:
 	docker compose stop
 down:
-	docker compose down --remove-orphans
+	docker compose down
+	# docker compose down --remove-orphans
 restart:
 	@make down
 	@make up
 destroy:
-	docker compose down --rmi all --volumes --remove-orphans
+	docker compose down --rmi all --volumes
+	# docker compose down --rmi all --volumes --remove-orphans
 destroy-volumes:
-	docker compose down --volumes --remove-orphans
+	docker compose down --volumes
+	# docker compose down --volumes --remove-orphans
 ps:
 	docker compose ps
 logs:
@@ -65,7 +68,7 @@ log-db-watch:
 web:
 	docker compose exec web ash
 app:
-	docker compose exec app bash
+	docker compose exec app ash
 migrate:
 	docker compose exec app php artisan migrate
 fresh:
