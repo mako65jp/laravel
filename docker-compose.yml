@@ -42,6 +42,7 @@ services:
       POSTGRES_DB: ${DB_DATABASE:-postgres}
       POSTGRES_USER: ${DB_USERNAME:-postgres}
       POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+    restart: always
     ports:
       - ${DB_PORT:-5432}:5432
     volumes: 
